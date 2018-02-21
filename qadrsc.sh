@@ -8,7 +8,7 @@
 # GitHub: https://github.com/urbanware-org/qadrsc
 # ============================================================================
 
-version="1.0.0"
+version="1.0.1"
 
 usage() {
     script_file=$(basename "$0")
@@ -49,6 +49,10 @@ remote_user="$2"
 
 file_source=$(sed -e "s/.*\///g" <<< $1)
 dir_source=$(sed -e "s/$file_source$//g" <<< $1)
+
+if [ -z "$dir_source" ]; then
+    dir_source=$(pwd)
+fi
 
 cd $dir_source
 tar -c ./$file_source | ssh ${remote_user}@${remote_ip} \
