@@ -8,44 +8,72 @@
 # GitHub: https://github.com/urbanware-org/qadrsc
 # ============================================================================
 
-version="1.0.1"
+version="1.1.0"
 
 usage() {
     script_file=$(basename "$0")
-    echo "usage: $script_file SOURCE_PATH REMOTE_USER REMOTE_IP"\
-                             "DESTINATION_DIR"
+    echo "usage: $script_file SOURCE_PATH DESTINATION_PATH"
     echo
     echo "required arguments:"
     echo "  SOURCE_PATH           path of the source file(s) on the local"\
                                  "system"
-    echo "  REMOTE_USER           username of the remote user used to log in"
-    echo "  REMOTE_IP             IP address of the remote system"
-    echo "  DESTINATION_DIR       directory on the remote system to copy the"\
-                                 "files to"
+    echo "  DESTINATION_DIR       username, IP address and directory on the"\
+                                 "remote"
+    echo "                        system to copy the files to"
     echo
-    echo "Notice that when using asterisks in the source path, the path must"\
-         "either be"
-    echo "enclosed with single (') or double (\") quotes."
+    echo "Notice that when using asterisks (*) in the source path, the path"\
+         "must either"
+    echo "be enclosed with single (') or double (\") quotes."
+    echo
+    echo "The destination path syntax is identical with the one from 'rsync'"\
+         "and 'scp',"
+    echo "e. g. \"johndoe@192.168.2.1:/etc\"."
     echo
     echo "Further information and usage examples can be found inside the"\
          "'README' file"
     echo "of this project."
+    if [ -z "$1" ]; then
+        exit 0
+    else
+        echo
+        echo "error: $1"
+        exit 1
+    fi
 }
 
 if [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
     usage
+elif [ "$1" = "--version" ]; then
+    echo "$version"
     exit 0
-elif [ $# -ne 4 ]; then
-    usage
-    echo
-    echo "error: Invalid number of arguments (4 required)"
-    exit 1
+elif [ $# -ne 2 ]; then
+    usage "Invalid number of arguments (2 required)"
+fi
+
+grep "@" <<< $2 &>/dev/null
+if [ $? -eq 1 ]; then
+    usage "Invalid destination syntax ('@' separator missing)"
+fi
+grep ":" <<< $2 &>/dev/null
+if [ $? -eq 1 ]; then
+    usage "Invalid destination syntax (':' separator missing)"
 fi
 
 dir_current=$(pwd)
-dir_destination="/$4"   # the leading slash denies using dynamic paths
-remote_ip="$3"
-remote_user="$2"
+remote_user="$(echo "$2" | cut -d '@' -f 1)"
+remote_path="$(echo "$2" | cut -d '@' -f 2)"
+remote_ip="$(echo "$remote_path" | cut -d ':' -f 1)"
+
+# The leading slash denies using dynamic paths
+dir_destination="/$(echo "$remote_path" | cut -d ':' -f 2)"
+
+if [ -z "$dir_destination" ]; then
+    usage "Destination directory seems to be missing"
+elif [ -z "$remote_user" ]; then
+    usage "Remote user seems to be missing"
+elif [ -z "$remote_ip" ]; then
+    usage "Remote IP address seems to be missing"
+fi
 
 file_source=$(sed -e "s/.*\///g" <<< $1)
 dir_source=$(sed -e "s/$file_source$//g" <<< $1)
@@ -60,4 +88,3 @@ tar -c ./$file_source | ssh ${remote_user}@${remote_ip} \
 cd $dir_current
 
 # EOF
-
