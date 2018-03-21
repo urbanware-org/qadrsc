@@ -1,4 +1,4 @@
-# *QadRsc*
+# *qadrsc*
 
 **Table of contents**
 *   [Definition](#definition)
