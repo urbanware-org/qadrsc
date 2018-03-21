@@ -33,6 +33,10 @@ Feel free to modify!
 
 The command-line arguments have been revised in version 1.1.0 of the project. From now on, you can use the typical *rsync* or *scp* syntax for the destination path.
 
+### Examples
+
+#### Static source path
+
 So, let's assume you have the server `192.168.2.1` which does not permit logging in via SSH as root, but with the user `johndoe`.
 
 Now, you want to copy the local file `/etc/foobar.conf` to the `/etc` directory of the server. You can do that as follows:
@@ -49,11 +53,23 @@ $ ./qadrsc.sh '/etc/somestuff/*' johndoe@192.168.2.1:/root
 
 Notice that when using asterisks (`*`) in the source path, the path must either be enclosed with single (`'`) or double (`"`) quotes. Otherwise an argument error (too many arguments) will occur.
 
-Using a dynamic path also works, for example:
+#### Dynamic source path
+
+Using a dynamic path also works. In the following example the `qadrsc.sh` script is located in `/opt/qadrsc`.
 
 ```
 $ cd /etc
-$ ./qadrsc.sh ./foobar.conf johndoe@192.168.2.1:/etc
+$ /opt/qadrsc/qadrsc.sh ./foobar.conf johndoe@192.168.2.1:/etc
+```
+
+Notice that when using asterisks (`*`) in the source path, the path must either be enclosed with single (`'`) or double (`"`) quotes. Otherwise an argument error (too many arguments) will occur.
+
+### Bash alias
+
+In order to simplify and speed up the use of the script, you can add a *Bash* alias to `/etc/bashrc` (system wide) or `~/.bashrc` (for the current user).
+
+```bash
+alias qadrsc='/opt/qadrsc/qadrsc.sh'
 ```
 
 [Top](#)
