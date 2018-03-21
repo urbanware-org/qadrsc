@@ -1,0 +1,17 @@
+
+CHANGELOG (qadrsc)
+
+    Version 1.1.0 (2018-03-20)
+
+        * Revised the command-line arguments as well as the code to parse them
+          (now using common destination path syntax).
+        * Revised the usage function in general.
+
+    Version 1.0.1 (2018-02-21)
+
+        # Fixed the empty source directory bug.
+
+    Version 1.0.0 (2018-02-19)
+
+        * First official release of this major version.
+
