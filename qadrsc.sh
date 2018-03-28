@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # ============================================================================
-# qadrsc - Quick-and-dirty securely copy to remote script
+# qadrsc - Quick-and-dirty remote secure copy script
 # Copyright (C) 2018 by Ralf Kilian
 # Distributed under the MIT License (https://opensource.org/licenses/MIT)
 #
