@@ -1,7 +1,7 @@
 
 LICENSE (qadrsc)
 
-    qadrsc - Quick-and-dirty securely copy to remote script
+    qadrsc - Quick-and-dirty remote secure copy script
     Copyright (C) 2018 by Ralf Kilian
 
     Distributed under the MIT License:
@@ -24,4 +24,4 @@ LICENSE (qadrsc)
         CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
         TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
         SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
+        
