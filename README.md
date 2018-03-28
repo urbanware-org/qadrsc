@@ -3,6 +3,7 @@
 **Table of contents**
 *   [Definition](#definition)
 *   [Details](#details)
+*   [Preparation](#preparation)
 *   [Usage](#usage)
 
 ----
@@ -29,11 +30,39 @@ Feel free to modify!
 
 [Top](#)
 
+## Preparation
+
+Before you can use the script, you have to prepare the **remote system**.
+
+1.  Create a user which you want to use for the remote interaction, e. g. `johndoe`.
+
+    ```
+    # useradd johndoe
+    ```
+
+1.  Set a password for the new user.
+
+    ```
+    # passwd johndoe
+    ```
+
+1.  Run `visudo` and add the following line at the end of the file:
+
+    ```ruby
+    johndoe     ALL=(ALL)   NOPASSWD: ALL
+    ```
+
+1.  Save the changes and exit.
+
+[Top](#)
+
 ## Usage
 
 The command-line arguments have been revised in version 1.1.0 of the project. From now on, you can use the typical *rsync* or *scp* syntax for the destination path.
 
-### Examples
+Notice that when using asterisks (`*`) in the source path, the whole path must either be enclosed with single (`'`) or double (`"`) quotes. Otherwise an argument error will occur (too many arguments).
+
+### Examples with remote destinations
 
 #### Static source path
 
@@ -48,10 +77,14 @@ $ ./qadrsc.sh /etc/foobar.conf johndoe@192.168.2.1:/etc
 In the next step you want to copy the contents of `/tmp/somestuff` to `/root` on the remote system. Simply use the following command:
 
 ```
-$ ./qadrsc.sh '/etc/somestuff/*' johndoe@192.168.2.1:/root
+$ ./qadrsc.sh '/tmp/somestuff/*' johndoe@192.168.2.1:/root
 ```
 
-Notice that when using asterisks (`*`) in the source path, the path must either be enclosed with single (`'`) or double (`"`) quotes. Otherwise an argument error (too many arguments) will occur.
+You can also copy the entire directory:
+
+```
+$ ./qadrsc.sh /tmp/somestuff johndoe@192.168.2.1:/root
+```
 
 #### Dynamic source path
 
@@ -62,7 +95,13 @@ $ cd /etc
 $ /opt/qadrsc/qadrsc.sh ./foobar.conf johndoe@192.168.2.1:/etc
 ```
 
-Notice that when using asterisks (`*`) in the source path, the path must either be enclosed with single (`'`) or double (`"`) quotes. Otherwise an argument error (too many arguments) will occur.
+### Example with a remote source
+
+Since version 1.2.0 you can also use a remote path as source, for example:
+
+```
+$ ./qadrsc.sh johndoe@192.168.2.1:/etc/foobar.conf /tmp
+```
 
 ### Bash alias
 
