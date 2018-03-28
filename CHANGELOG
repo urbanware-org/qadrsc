@@ -1,6 +1,13 @@
 
 CHANGELOG (qadrsc)
 
+    Version 1.2.0 (2018-03-28)
+
+        * Added the ability to also use remote paths as source.
+
+        * Revised the code to parse remote paths (now done by a function).
+        * Revised the usage information.
+
     Version 1.1.0 (2018-03-20)
 
         * Revised the command-line arguments as well as the code to parse them
@@ -14,4 +21,4 @@ CHANGELOG (qadrsc)
     Version 1.0.0 (2018-02-19)
 
         * First official release of this major version.
-
+        
