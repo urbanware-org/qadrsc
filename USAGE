@@ -1,0 +1,105 @@
+
+USAGE (qadrsc.sh)
+
+    Contents:
+
+        1.  Definition
+        2.  General
+        3.  Preparation
+        4.  Usage
+          4.1  Examples with remote destinations
+             4.1.1  Absolute source path
+             4.1.2  Relative source path
+          4.2  Example with a remote source
+          4.3  Bash alias
+
+    1. Definition
+    
+        Simple script to securely copy files from the local to a remote system
+        as root even though SSH root login is not permitted.       
+        
+    2. General
+    
+        The script requires command-line arguments to operate. You can get an
+        overview of all arguments available, by simply running the script with
+        with the '--help' argument:
+
+                $ ./qadrsc.sh --help
+
+    3. Preparation
+    
+        Before you can use the script, you have to prepare the remote system.
+        
+        Create a user which you want to use for the remote interaction, e. g.
+        'johndoe'.
+               
+            # useradd johndoe
+                
+        Set a password for the new user.
+            
+            # passwd johndoe
+                   
+        Run 'visudo' and add the following line at the end of the file:
+
+            johndoe     ALL=(ALL)   NOPASSWD: ALL
+                   
+        Save the changes and exit.
+
+    4. Usage
+    
+        The command-line arguments have been revised in version 1.1.0 of the
+        project. From now on, you can use the typical 'rsync' or 'scp' syntax
+        for the destination path.
+
+        Notice that when using asterisks (*) in the source path, the whole
+        path must either be enclosed with single (') or double (") quotes.
+        Otherwise an argument error will occur (too many arguments).
+        
+        4.1 Examples with remote destinations
+        
+            4.1.1 Absolute source path
+            
+                So, let's assume you have the server with the IP address
+                192.168.2.1 which does not permit logging in via SSH as root,
+                but with the user 'johndoe'.
+
+                Now, you want to copy the local file '/etc/foobar.conf' to the
+                '/etc' directory of the server. You can do that as follows:
+
+                    $ ./qadrsc.sh /etc/foobar.conf johndoe@192.168.2.1:/etc
+
+                In the next step you want to copy the contents of '/tmp/stuff'
+                to '/root' on the remote system. Simply use the following
+                command:
+
+                    $ ./qadrsc.sh '/tmp/stuff/*' johndoe@192.168.2.1:/root
+
+                You can also copy the entire directory:
+
+                    $ ./qadrsc.sh /tmp/stuff johndoe@192.168.2.1:/root
+            
+            4.1.2 Relative source path
+            
+                Using a relative path also works. In the following example the
+                the directory '/tmp/stuff' will be copied to the remote server
+                into the '/root' directory (assuming that 'qadrsc.sh' script
+                is located in '/opt/qadrsc').
+
+                    $ cd /tmp
+                    $ /opt/qadrsc/qadrsc.sh ./stuff johndoe@192.168.2.1:/root
+
+        4.2 Example with a remote source
+        
+            Since version 1.2.0 you can also use a remote path as source, for
+            example:
+
+                $ ./qadrsc.sh johndoe@192.168.2.1:/etc/foobar.conf /tmp
+        
+        4.3 Bash alias
+      
+            In order to simplify and speed up the use of the script, you can
+            add a Bash alias to '/etc/bashrc' (system wide) or '~/.bashrc'
+            (for the current user).
+
+                alias qadrsc='/opt/qadrsc/qadrsc.sh'
+                

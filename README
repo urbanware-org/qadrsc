@@ -1,0 +1,61 @@
+
+README (qadrsc)
+
+    Project
+    
+        qadrsc
+        Version 1.2.0
+        Copyright (C) 2018 by Ralf Kilian
+
+        GitHub: https://github.com/urbanware-org/qadrsc
+        
+    Definition
+    
+        Simple script to securely copy files from the local to a remote system
+        as root even though SSH root login is not permitted.
+        
+    Details
+
+        Usually, logging into a remote system using the root account via SSH
+        is disabled on servers for security reasons. Instead, there is a
+        separate user account to use for that purpose, e. g. 'johndoe'.
+
+        Now, if you use that user in combination via rsync or scp, you can't
+        copy files in the remote '/root' or '/etc' directory, due to the fact,
+        that 'johndoe' does not have the permission to write to those
+        locations.
+
+        You could copy the files to '/tmp', however, you would have to change
+        the owner on the remote system to have a consistent file ownership.
+
+        This script allows to securely copy files to system directories on a
+        remote system (like 'scp') with root as owner no matter which user is
+        being used on the local system.
+
+        As the name implies, it is a quick-and-dirty solution.
+
+        Feel free to modify!
+
+    License
+
+        This project is distributed under the MIT License. You should have
+        received a copy of the license along with this program (see the
+        'LICENSE' file). If not, you can find the license terms here:
+
+            https://opensource.org/licenses/MIT
+
+    Usage
+
+        For fundamental documentation as well as some usage examples can be
+        found inside the 'USAGE' file.
+
+    Legal information
+
+        The project name is completely fictitious. Any correspondences with
+        existing websites, applications, companies and/or other projects are
+        purely coincidental.
+
+        All trademarks belong to their respective owners.
+
+        Errors and omissions excepted.
+        
