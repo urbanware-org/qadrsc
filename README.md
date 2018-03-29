@@ -62,11 +62,13 @@ The command-line arguments have been revised in version 1.1.0 of the project. Fr
 
 Notice that when using asterisks (`*`) in the source path, the whole path must either be enclosed with single (`'`) or double (`"`) quotes. Otherwise an argument error will occur (too many arguments).
 
+You can also find the following examples inside the `USAGE` file.
+
 ### Examples with remote destinations
 
-#### Static source path
+#### Absolute source path
 
-So, let's assume you have the server `192.168.2.1` which does not permit logging in via SSH as root, but with the user `johndoe`.
+So, let's assume you have the server with the IP address `192.168.2.1` which does not permit logging in via SSH as root, but with the user `johndoe`.
 
 Now, you want to copy the local file `/etc/foobar.conf` to the `/etc` directory of the server. You can do that as follows:
 
@@ -74,25 +76,25 @@ Now, you want to copy the local file `/etc/foobar.conf` to the `/etc` directory 
 $ ./qadrsc.sh /etc/foobar.conf johndoe@192.168.2.1:/etc
 ```
 
-In the next step you want to copy the contents of `/tmp/somestuff` to `/root` on the remote system. Simply use the following command:
+In the next step you want to copy the contents of `/tmp/stuff` to `/root` on the remote system. Simply use the following command:
 
 ```
-$ ./qadrsc.sh '/tmp/somestuff/*' johndoe@192.168.2.1:/root
+$ ./qadrsc.sh '/tmp/stuff/*' johndoe@192.168.2.1:/root
 ```
 
 You can also copy the entire directory:
 
 ```
-$ ./qadrsc.sh /tmp/somestuff johndoe@192.168.2.1:/root
+$ ./qadrsc.sh /tmp/stuff johndoe@192.168.2.1:/root
 ```
 
-#### Dynamic source path
+#### Relative source path
 
-Using a dynamic path also works. In the following example the `qadrsc.sh` script is located in `/opt/qadrsc`.
+Using a relative path also works. In the following example the the directory `/tmp/stuff` will be copied to the remote server into the `/root` directory (assuming that `qadrsc.sh` script is located in `/opt/qadrsc`).
 
 ```
-$ cd /etc
-$ /opt/qadrsc/qadrsc.sh ./foobar.conf johndoe@192.168.2.1:/etc
+$ cd /tmp
+$ /opt/qadrsc/qadrsc.sh ./stuff johndoe@192.168.2.1:/root
 ```
 
 ### Example with a remote source
@@ -105,7 +107,7 @@ $ ./qadrsc.sh johndoe@192.168.2.1:/etc/foobar.conf /tmp
 
 ### Bash alias
 
-In order to simplify and speed up the use of the script, you can add a *Bash* alias to `/etc/bashrc` (system wide) or `~/.bashrc` (for the current user).
+In order to simplify and speed up the use of the script, you can add a *Bash* alias to `/etc/bashrc` (system wide) or `~/.bashrc` (for the current user). For example:
 
 ```bash
 alias qadrsc='/opt/qadrsc/qadrsc.sh'
