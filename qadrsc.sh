@@ -21,7 +21,7 @@ parse_path() {
         remote_target="$(echo "$input_path" | cut -d '@' -f 2)"
         remote_ip="$(echo "$remote_target" | cut -d ':' -f 1)"
 
-        # The leading slash prevents using dynamic paths
+        # The leading slash prevents using relative paths
         remote_path="/$(echo "$remote_target" | cut -d ':' -f 2)"
     fi
 }
@@ -45,9 +45,9 @@ usage() {
          "'scp',"
     echo "e. g. \"johndoe@192.168.2.1:/etc\"."
     echo
-    echo "Further information and usage examples can be found inside the"\
-         "'README' file"
-    echo "of this project."
+    echo "Further information can be found inside the 'README' file, for"\
+         "usage examples"
+    echo "see the 'USAGE' file."
     if [ -z "$1" ]; then
         exit 0
     else
