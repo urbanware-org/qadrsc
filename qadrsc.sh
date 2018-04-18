@@ -26,6 +26,11 @@ parse_path() {
             remote_user="$(whoami)"
         fi
 
+        if [ -z "$remote_user" ]; then
+            # In case an '@' was given without a preceding user name
+            usage "Remote username missing"
+        fi
+        
         # The leading slash prevents using relative paths
         remote_path="/$(echo "$remote_target" | cut -d ':' -f 2)"
     fi
