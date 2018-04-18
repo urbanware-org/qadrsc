@@ -8,7 +8,7 @@
 # GitHub: https://github.com/urbanware-org/qadrsc
 # ============================================================================
 
-version="1.2.0"
+version="1.2.1"
 
 parse_path() {
     input_path="$1"
@@ -30,7 +30,7 @@ parse_path() {
             # In case an '@' was given without a preceding user name
             usage "Remote username missing"
         fi
-        
+
         # The leading slash prevents using relative paths
         remote_path="/$(echo "$remote_target" | cut -d ':' -f 2)"
     fi
