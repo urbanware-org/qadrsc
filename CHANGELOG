@@ -1,16 +1,24 @@
 
 CHANGELOG (qadrsc)
 
+    Version 1.2.1 (2018-04-18)
+
+        # Fixed the bug when trying to connect to a remote system with an at
+          sign, but without username given (now raises an error).
+        # Fixed the bug when trying to connect to a remote system without
+          giving an username (now uses the name of current user, needed to be
+          explicit before).
+
     Version 1.2.0 (2018-03-28)
 
-        * Added the ability to also use remote paths as source.
+        + Added the ability to also use remote paths as source.
 
         * Revised the code to parse remote paths (now done by a function).
         * Revised the usage information.
 
     Version 1.1.0 (2018-03-20)
 
-        * Revised the command-line arguments as well as the code to parse them
+        + Revised the command-line arguments as well as the code to parse them
           (now using common destination path syntax).
         * Revised the usage function in general.
 
@@ -21,4 +29,4 @@ CHANGELOG (qadrsc)
     Version 1.0.0 (2018-02-19)
 
         * First official release of this major version.
-
+        
