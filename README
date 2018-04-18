@@ -2,18 +2,18 @@
 README (qadrsc)
 
     Project
-    
+
         qadrsc
         Version 1.2.0
         Copyright (C) 2018 by Ralf Kilian
 
         GitHub: https://github.com/urbanware-org/qadrsc
-        
+
     Definition
-    
+
         Simple script to securely copy files from the local to a remote system
         as root even though SSH root login is not permitted.
-        
+
     Details
 
         Usually, logging into a remote system using the root account via SSH
@@ -58,4 +58,4 @@ README (qadrsc)
         All trademarks belong to their respective owners.
 
         Errors and omissions excepted.
-        
+
