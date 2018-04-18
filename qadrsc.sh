@@ -21,6 +21,11 @@ parse_path() {
         remote_target="$(echo "$input_path" | cut -d '@' -f 2)"
         remote_ip="$(echo "$remote_target" | cut -d ':' -f 1)"
 
+        if [ "$remote_user" = "$remote_target" ]; then
+            # The remote user and target are identical if no user was given
+            remote_user="$(whoami)"
+        fi
+
         # The leading slash prevents using relative paths
         remote_path="/$(echo "$remote_target" | cut -d ':' -f 2)"
     fi
