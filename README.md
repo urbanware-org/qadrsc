@@ -52,7 +52,7 @@ Before you can use the script, you have to prepare the **remote system**.
     johndoe     ALL=(ALL)   NOPASSWD: ALL
     ```
 
-1.  Save the changes and exit.
+1.  Save the changes and exit. Then switch to the local system.
 
 [Top](#)
 
