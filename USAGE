@@ -43,10 +43,10 @@ USAGE (qadrsc.sh)
 
             johndoe     ALL=(ALL)   NOPASSWD: ALL
                    
-        Save the changes and exit.
+        Save the changes and exit. Then switch to the local system.
 
     4. Usage
-    
+
         The command-line arguments have been revised in version 1.1.0 of the
         project. From now on, you can use the typical 'rsync' or 'scp' syntax
         for the destination path.
