@@ -5,6 +5,7 @@
 *   [Details](#details)
 *   [Preparation](#preparation)
 *   [Usage](#usage)
+*   [Contact](#contact)
 
 ----
 
@@ -12,7 +13,7 @@
 
 Simple script to securely copy files from the local to a remote system as root even though SSH root login is not permitted.
 
-[Top](#)
+[Top](#qadrsc)
 
 ## Details
 
@@ -28,7 +29,7 @@ As the name implies, it is a quick-and-dirty solution.
 
 Feel free to modify!
 
-[Top](#)
+[Top](#qadrsc)
 
 ## Preparation
 
@@ -54,7 +55,7 @@ Before you can use the script, you have to prepare the **remote system**.
 
 1.  Save the changes and exit. Then switch to the local system.
 
-[Top](#)
+[Top](#qadrsc)
 
 ## Usage
 
@@ -113,4 +114,14 @@ In order to simplify and speed up the use of the script, you can add a *Bash* al
 alias qadrsc='/opt/qadrsc/qadrsc.sh'
 ```
 
-[Top](#)
+[Top](#qadrsc)
+
+## Contact
+
+Any suggestions, questions, bugs to report or feedback to give?
+
+You can contact me by sending an email to <dev@urbanware.org>.
+
+Further information can be found inside the `CONTACT` file.
+
+[Top](#qadrsc)
