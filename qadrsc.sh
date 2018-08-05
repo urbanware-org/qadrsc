@@ -6,6 +6,7 @@
 # Distributed under the MIT License (https://opensource.org/licenses/MIT)
 #
 # GitHub: https://github.com/urbanware-org/qadrsc
+# GitLab: https://gitlab.com/urbanware-org/qadrsc
 # ============================================================================
 
 version="1.2.1"
