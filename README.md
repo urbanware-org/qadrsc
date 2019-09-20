@@ -17,7 +17,7 @@ Simple script to securely copy files from the local to a remote system as root e
 
 ## Details
 
-Usually, logging into a remote system using the root account via SSH is disabled on servers for security reasons. Instead, there is a separate user account to use for that purpose, e. g. `johndoe`.
+Usually, logging into a remote system using the root account via SSH is disabled on servers for security reasons. Instead, there is a separate user account to use for that purpose, e.g. `johndoe`.
 
 Now, if you use that user in combination via *rsync* or *scp*, you can't copy files in the remote `/root` or `/etc` directory, due to the fact, that `johndoe` does not have the permission to write to those locations.
 
@@ -35,7 +35,7 @@ Feel free to modify!
 
 Before you can use the script, you have to prepare the **remote system**.
 
-1.  Create a user which you want to use for the remote interaction, e. g. `johndoe`.
+1.  Create a user which you want to use for the remote interaction, e.g. `johndoe`.
 
     ```
     # useradd johndoe

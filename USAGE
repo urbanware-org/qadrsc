@@ -30,7 +30,7 @@ USAGE (qadrsc.sh)
     
         Before you can use the script, you have to prepare the remote system.
         
-        Create a user which you want to use for the remote interaction, e. g.
+        Create a user which you want to use for the remote interaction, e.g.
         'johndoe'.
                
             # useradd johndoe

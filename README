@@ -19,7 +19,7 @@ README (qadrsc)
 
         Usually, logging into a remote system using the root account via SSH
         is disabled on servers for security reasons. Instead, there is a
-        separate user account to use for that purpose, e. g. 'johndoe'.
+        separate user account to use for that purpose, e.g. 'johndoe'.
 
         Now, if you use that user in combination via rsync or scp, you can't
         copy files in the remote '/root' or '/etc' directory, due to the fact,
