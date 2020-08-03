@@ -33,13 +33,13 @@ parse_path() {
             else
                 # The remote user and target are identical if no user was
                 # given and in case there no default user is set above, use
-                # the user name of the current user
+                # the username of the current user
                 remote_user="$(whoami)"
             fi
         fi
 
         if [ -z "$remote_user" ]; then
-            # In case an '@' was given without a preceding user name
+            # In case an '@' was given without a preceding username
             usage "Remote username missing"
         fi
 
