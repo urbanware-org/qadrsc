@@ -2,14 +2,14 @@
 
 # ============================================================================
 # qadrsc - Quick-and-dirty remote secure copy script
-# Copyright (C) 2018 by Ralf Kilian
+# Copyright (C) 2020 by Ralf Kilian
 # Distributed under the MIT License (https://opensource.org/licenses/MIT)
 #
 # GitHub: https://github.com/urbanware-org/qadrsc
 # GitLab: https://gitlab.com/urbanware-org/qadrsc
 # ============================================================================
 
-version="1.2.1"
+version="1.2.2"
 
 # This allows to set a default user which is used by default in case no user
 # is explicitly on the command-line using '@'
