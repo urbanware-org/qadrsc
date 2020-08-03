@@ -1,6 +1,10 @@
 
 CHANGELOG (qadrsc)
 
+    Next version (outstanding)
+
+        + Added an option to the script file to set a default remote user.
+
     Version 1.2.1 (2018-04-18)
 
         # Fixed the bug when trying to connect to a remote system with an at
@@ -29,4 +33,4 @@ CHANGELOG (qadrsc)
     Version 1.0.0 (2018-02-19)
 
         * First official release of this major version.
-
+        
