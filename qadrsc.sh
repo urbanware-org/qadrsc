@@ -11,6 +11,10 @@
 
 version="1.2.1"
 
+# This allows to set a default user which is used by default in case no user
+# is explicitly on the command-line using '@'
+remote_user_default=""
+
 parse_path() {
     input_path="$1"
     path_is_remote=0
@@ -23,8 +27,15 @@ parse_path() {
         remote_ip="$(echo "$remote_target" | cut -d ':' -f 1)"
 
         if [ "$remote_user" = "$remote_target" ]; then
-            # The remote user and target are identical if no user was given
-            remote_user="$(whoami)"
+            if [ ! -z "$remote_user_default" ]; then
+                # No specific user was given, so use the default one set above
+                remote_user="$remote_user_default"
+            else
+                # The remote user and target are identical if no user was
+                # given and in case there no default user is set above, use
+                # the user name of the current user
+                remote_user="$(whoami)"
+            fi
         fi
 
         if [ -z "$remote_user" ]; then
